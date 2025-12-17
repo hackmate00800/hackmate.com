@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI calculator</title>
+   <style>
+body {
+  background-image: url("./media/visax-EzU1ME2O1ak-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+/* 📦 Main container */
+form {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 320px;
+  backdrop-filter: blur(8px);
+}
+
+/* 🏷️ Headings */
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  text-shadow: 2px 2px 8px black;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+}
+
+/* 📋 Labels and inputs */
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input {
+  width: 80%;
+  padding: 8px 10px;
+  margin-top: 5px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #4CAF50;
+}
+
+/* 🔘 Button */
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+  background-color: #43a047;
+  transform: scale(1.05);
+}
+
+/* 📊 Results and guide */
+#results {
+  margin-top: 15px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1a237e;
+}
+
+#weight-guide {
+  margin-top: 25px;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+#weight-guide h3 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 8px;
+}
+   </style>
+</head>
+<body>
+    <h1>BMI calculator</h1>
+    <form>
+        <p><label>Height in CM</label> <input type="text" id="height"/></p>
+        <P><Label>Weight in KG</Label> <input type="text" id="weight"/></P>
+        <button>calculate</button>
+        <div id="results"></div>
+        <div id="weight-guide">
+            <h3>BMI  weight guide</h3>
+            <p>under weight = less than 18.6</p>
+            <p>normal weight = 18.6 to 24.9</p>
+            <p>overweight = greater than 24.9</p>
+        </div>
+    </form>
+</body>
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const height = parseInt(document.querySelector('#height').value);
+        const weight = parseInt(document.querySelector('#weight').value);
+        const results = document.querySelector('#results');
+        if (height === '' || height < 0 || isNaN(height)){
+            results.innerHTML = `please enter the valid height ${height}`;
+        } else if (weight === '' || weight < 0 || isNaN(weight)){
+            results.innerHTML = `please enter the valid height ${weight}`;
+        } else {
+            const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+            // show result:-
+            results.innerHTML = `<span>${bmi}</span>`;
+        }
+      });
+//     const form = document.querySelector('form');
+// // this usecase will give you empty
+// // const height = parseInt(document.querySelector('#height').value)
+
+// form.addEventListener('submit', function (e) {
+//   e.preventDefault();
+
+//   const height = parseInt(document.querySelector('#height').value);
+//   const weight = parseInt(document.querySelector('#weight').value);
+//   const results = document.querySelector('#results');
+
+//   if (height === '' || height < 0 || isNaN(height)) {
+//     results.innerHTML = `Please give a valid height ${height}`;
+//   } else if (weight === '' || weight < 0 || isNaN(weight)) {
+//     results.innerHTML = `Please give a valid weight ${weight}`;
+//   } else {
+//     const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+//     //show the result
+//     results.innerHTML = `<span>${bmi}</span>`;
+//   }
+// });
+
+
+    
+
+</script>
+</html>

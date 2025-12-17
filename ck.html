@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>digital clock</title>
+    <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #ff6f61, #ffb88c);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Clock container */
+.clockbox {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 40px 60px;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Title text */
+.clockbox h1 {
+  color: #ffffff;
+  font-size: 2rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 20px;
+}
+
+/* Time display */
+.timebox {
+  background-color: #009688;
+  color: #00ffff;
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 25px 50px;
+  border-radius: 50px;
+  box-shadow: 0 0 25px #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+  display: inline-block;
+  min-width: 220px;
+  letter-spacing: 3px;
+  transition: transform 0.3s ease;
+}
+
+.timebox:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .clockbox {
+    padding: 30px;
+  }
+
+  .timebox {
+    font-size: 2rem;
+    padding: 20px 35px;
+  }
+
+  .clockbox h1 {
+    font-size: 1.5rem;
+  }
+}
+    </style>
+</head>
+
+<body>
+    <div class="clockbox">
+        <h1>your local time</h1>
+        <div class="timebox">
+            <h2 id="time"></h2>
+        </div>
+    </div>
+    <script>
+       const time = document.getElementById('time');
+       console.log(time);
+       
+
+       setInterval(function(){
+              let date = new Date()
+       const timing=date.toLocaleTimeString();
+    time.innerHTML = timing;
+       },1000);
+       
+    </script>
+</body>
+
+</html>

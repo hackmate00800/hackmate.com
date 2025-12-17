@@ -1,0 +1,29 @@
+body {
+    background-image: url(./media/visax-EzU1ME2O1ak-unsplash.jpg);
+}
+
+.background {
+    color-scheme: light only;
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    width: 613px;
+    height: 878px;
+    margin: 65px;
+    padding: 28px;
+    position: absolute;
+    top: -23px;
+    right: 265px;
+    border-radius: 53px;
+}
+
+.text1 {
+    text-align: center;
+    position:absolute;
+    top: 101px;
+    right: 252px;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-size: 75px;
+}

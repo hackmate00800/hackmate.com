@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keyboard checker</title>
+     <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 50%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+      font-size: 1.2em;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+    <div id ="table">
+        <div id ="key">
+            <h1>keyboard checker</h1>
+            <p>press key to check</p>
+        </div>
+    </div>
+    <script>
+        const key = document.getElementById("key")// class gives you array like object but id give single element
+        // now we want to put event in whole window
+        window.addEventListener('keydown', (e) => {
+            key.innerHTML = `
+            <div class="result">
+                <table>
+  <tr>
+    <th>key</th>
+    <th>keycode</th>
+    <th>code</th>
+  </tr>
+  <tr>
+    <td>${e.key === " " ? "space" : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+  
+</table>
+               </div>`
+        })
+        console.log();
+    </script>
+</body>
+
+</html>

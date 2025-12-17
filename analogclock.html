@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analog Clock with Tick Sound</title>
+  <style>
+    :root {
+      --size: 380px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      background: linear-gradient(180deg, #0f172a, #071024);
+      font-family: system-ui, Segoe UI, Roboto, Arial;
+      color: #e6eef8;
+    }
+
+    /* CLOCK STYLING */
+    .clock {
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.05), transparent),
+        linear-gradient(180deg, #102133 0%, #071022 100%);
+      border: 12px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.75),
+        inset 0 6px 18px rgba(255, 255, 255, 0.02);
+      display: grid;
+      place-items: center;
+    }
+
+    .pivot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #e6eef8;
+      z-index: 10;
+    }
+
+    .ticks {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
+    .tick {
+      position: absolute;
+      left: 50%;
+      top: 6%;
+      width: 2px;
+      height: 24px;
+      background: rgba(230, 238, 248, 0.85);
+      transform-origin: center 100%;
+      opacity: 0.8;
+      border-radius: 1px;
+    }
+    .tick.hour {
+      height: 34px;
+      width: 4px;
+      top: 4%;
+      opacity: 1;
+    }
+
+    .number {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      font-weight: bold;
+      color: #e6eef8;
+    }
+
+    /* HANDS */
+    .hand {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: 50% 100%;
+    }
+    .hour-hand {
+      width: 10px;
+      height: 90px;
+      z-index: 6;
+      background: #e6eef8;
+      border-radius: 4px;
+    }
+    .minute-hand {
+      width: 6px;
+      height: 120px;
+      z-index: 7;
+      background: #bfe1ff;
+      border-radius: 4px;
+    }
+    .second-hand {
+      width: 3px;
+      height: 140px;
+      z-index: 8;
+      background: #ff4c4c;
+      border-radius: 4px;
+    }
+
+    .info {
+      position: absolute;
+      bottom: -120px;
+      text-align: center;
+    }
+    .info .digital {
+      font-size: 22px;
+      margin-top: 10px;
+      color: #bfe1ff;
+      letter-spacing: 1px;
+    }
+    .info .date {
+      font-size: 14px;
+      margin-top: 5px;
+      opacity: 0.85;
+    }
+    .day-night {
+      position: absolute;
+      top: -70px;
+      font-size: 24px;
+    }
+
+    /* TEA CUP */
+    .teacup {
+      position: relative;
+      width: 70px;
+      height: 35px;
+      border: 4px solid #e6eef8;
+      border-top: none;
+      border-radius: 0 0 35px 35px;
+      overflow: visible;
+    }
+    .teacup::after {
+      content: '';
+      position: absolute;
+      right: -15px;
+      top: 5px;
+      width: 25px;
+      height: 25px;
+      border: 4px solid #e6eef8;
+      border-radius: 50%;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      transform: rotate(45deg);
+    }
+
+    .steam {
+      position: absolute;
+      top: -40px;
+      left: 20px;
+      width: 30px;
+      height: 40px;
+    }
+    .steam span {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      animation: steamRise 2s infinite ease-in-out;
+    }
+    .steam span:nth-child(2) {
+      animation-delay: 0.6s;
+      left: 60%;
+    }
+    .steam span:nth-child(3) {
+      animation-delay: 1.2s;
+      left: 40%;
+    }
+    @keyframes steamRise {
+      0% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -40px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* SAND TIMER */
+    .hourglass {
+      position: relative;
+      width: 40px;
+      height: 70px;
+      border: 2px solid #bfe1ff;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .sand {
+      position: absolute;
+      width: 100%;
+      background: #ffcc66;
+      animation: sandFlow 4s infinite;
+    }
+    .sand.top {
+      height: 50%;
+      top: 0;
+      clip-path: polygon(0 0, 100% 0, 60% 100%, 40% 100%);
+    }
+    .sand.bottom {
+      height: 0%;
+      bottom: 0;
+      clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+    }
+    @keyframes sandFlow {
+      0% { height: 50%; }
+      50% { height: 10%; }
+      100% { height: 50%; }
+    }
+
+    .side-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Left: Teacup -->
+  <div class="side-container">
+    <div class="teacup">
+      <div class="steam">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center: Clock -->
+  <div class="clock">
+    <div class="day-night" id="daynight"></div>
+    <div class="ticks"></div>
+    <div id="numbers"></div>
+
+    <div class="hand hour-hand" id="hour"></div>
+    <div class="hand minute-hand" id="minute"></div>
+    <div class="hand second-hand" id="second"></div>
+
+    <div class="pivot"></div>
+    <div class="info">
+      <div class="digital" id="digital"></div>
+      <div class="date" id="dateinfo"></div>
+    </div>
+  </div>
+
+  <!-- Right: Hourglass -->
+  <div class="side-container">
+    <div class="hourglass">
+      <div class="sand top"></div>
+      <div class="sand bottom"></div>
+    </div>
+  </div>
+
+  <!-- Tick Sound -->
+  <audio id="tick-sound" preload="auto">
+    <source src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCAAwAABEV4YW1wbGUgVGljayBzb3VuZAAAAAAA" type="audio/mp3" />
+  </audio>
+
+  <script>
+    // Generate clock marks
+    const ticksEl = document.querySelector(".ticks");
+    for (let i = 0; i < 60; i++) {
+      const t = document.createElement("div");
+      t.className = "tick" + (i % 5 === 0 ? " hour" : "");
+      t.style.transform = `translate(-50%,0) rotate(${i * 6}deg)`;
+      ticksEl.appendChild(t);
+    }
+
+    // Add numbers 1–12
+    const numsEl = document.getElementById("numbers");
+    for (let i = 1; i <= 12; i++) {
+      const num = document.createElement("div");
+      num.className = "number";
+      const angle = (i * 30 - 90) * (Math.PI / 180);
+      const radius = 150;
+      const x = Math.cos(angle) * radius;
+      const y = Math.sin(angle) * radius;
+      num.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+      num.textContent = i;
+      numsEl.appendChild(num);
+    }
+
+    const hourHand = document.getElementById("hour");
+    const minuteHand = document.getElementById("minute");
+    const secondHand = document.getElementById("second");
+    const digital = document.getElementById("digital");
+    const dateinfo = document.getElementById("dateinfo");
+    const daynight = document.getElementById("daynight");
+    const tickSound = document.getElementById("tick-sound");
+
+    function update() {
+      const now = new Date();
+      const s = now.getSeconds();
+      const m = now.getMinutes();
+      const h = now.getHours();
+
+      const secondDeg = s * 6;
+      const minuteDeg = m * 6 + s * 0.1;
+      const hourDeg = (h % 12) * 30 + m * 0.5;
+
+      secondHand.style.transform = `translate(-50%, -100%) rotate(${secondDeg}deg)`;
+      minuteHand.style.transform = `translate(-50%, -100%) rotate(${minuteDeg}deg)`;
+      hourHand.style.transform = `translate(-50%, -100%) rotate(${hourDeg}deg)`;
+
+      const hrs = String(h).padStart(2, "0");
+      const mins = String(m).padStart(2, "0");
+      const secs = String(s).padStart(2, "0");
+      digital.textContent = `${hrs}:${mins}:${secs}`;
+
+      const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const day = weekDays[now.getDay()];
+      const date = now.getDate();
+      const month = now.toLocaleString("default", { month: "long" });
+      const year = now.getFullYear();
+      dateinfo.textContent = `${day}, ${date} ${month} ${year}`;
+
+      if (h >= 6 && h < 18) {
+        daynight.innerHTML = "☀️ Daytime";
+        document.body.style.background = "linear-gradient(180deg, #89c4f4, #1c92d2)";
+      } else {
+        daynight.innerHTML = "🌙 Night";
+        document.body.style.background = "linear-gradient(180deg, #0f172a, #071024)";
+      }
+
+      // Play tick sound
+      tickSound.currentTime = 0;
+      tickSound.play().catch(() => {});
+    }
+
+    update();
+    setInterval(update, 1000);
+  </script>
+</body>
+</html>

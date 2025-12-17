@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>backgroundcolorchanger</title>
+    <style>
+        body {
+            /* background-image: url('./media/jack-cohen-nHFczgs6ppw-unsplash.jpg'); */
+            background-color: rgb(94, 223, 235);
+            background-size: 1855px;
+            overflow-x: hidden;
+        }
+
+        .h1 {
+            font-family: "Playwrite DE SAS", cursive;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: rgb(147, 41, 247);
+            font-size: 75px;
+            text-align: center;
+        }
+
+        .whitebox {
+            display: flex;
+            justify-content: center;
+            /* center horizontally */
+            align-items: center;
+            /* center vertically */
+            gap: 20px;
+            /* space between circles */
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            ;
+            margin: 10px;
+            padding: 100px;
+            border-radius: 45px;
+            box-sizing: border-box;
+        }
+
+        
+
+        .item:hover {
+            transform: scale(1.2);
+
+        }
+
+        #red {
+
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: red;
+            border-radius: 500px;
+        }
+
+        #green {
+
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgb(26, 234, 18);
+            border-radius: 500px;
+        }
+
+        #blue {
+
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgb(26, 20, 196);
+            border-radius: 500px;
+        }
+
+        #pink {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgb(145, 75, 140);
+            border-radius: 500px;
+        }
+
+        #grey {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgb(46, 44, 44);
+            border-radius: 500px;
+        }
+        #black {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 500px;
+        }
+        #yellow {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgb(251, 255, 0);
+            border-radius: 500px;
+        }
+        #white {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="h1">background Changer</h1>
+    <nav <div class="whitebox">
+        <button class="item" id="red"></button>
+        <button class="item" id="blue"></button>
+        <button class="item" id="green"></button>
+        <button class="item" id="pink"></button>
+        <button class="item" id="grey"></button>
+        <button class="item" id="black"></button>
+        <button class="item" id="yellow"></button>
+        <button class="item" id="white"></button>
+
+        </div>
+    </nav>
+
+    </div>
+    <script>
+        const buttons = document.querySelectorAll('.item');
+        console.log(buttons);
+        const body = document.querySelector("body");
+        buttons.forEach(function(button){
+            button.addEventListener('click', function(event){
+                console.log(event);
+                console.log(event.target);
+                if(event.target.id == 'red' ){
+                    body.style.backgroundColor = event.target.id;
+                }
+                if(event.target.id == 'blue' ){
+                    body.style.backgroundColor = event.target.id;
+                }
+                if(event.target.id == 'green' ){
+                    body.style.backgroundColor = event.target.id;
+                }
+                if(event.target.id == 'pink' ){
+                    body.style.backgroundColor = event.target.id;
+                }
+                if(event.target.id == 'grey' ){
+                    body.style.backgroundColor = event.target.id;
+                }
+                if(event.target.id == 'black' ){
+                    body.style.backgroundColor = event.target.id;
+                }
+                if(event.target.id == 'yellow' ){
+                    body.style.backgroundColor = event.target.id;
+                }
+                if(event.target.id == 'white' ){
+                    body.style.backgroundColor = event.target.id;
+                }
+                
+            })
+        })
+        
+    </script>
+</body>
+
+</html>

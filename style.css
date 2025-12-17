@@ -1,0 +1,203 @@
+body {
+    background-image: url('./media/jack-cohen-nHFczgs6ppw-unsplash.jpg');
+    /* background-image: url(projects\javascriptandhtml\hackmate\media\visax-EzU1ME2O1ak-unsplash.jpg); */
+    background-size: 1855px;
+    overflow-x: hidden;
+}
+
+
+h1 {
+    position: absolute;
+    right: -91px;
+    top: 5px;
+    text-align: left;
+    color: rgb(131, 49, 208);
+    position: relative;
+    font-family: "Bitcount Grid Single", system-ui;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+
+}
+
+h2 {
+    text-align: left;
+    color: rgb(124, 8, 207);
+    font-family: "BBH Sans Hegarty", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 200px;
+    letter-spacing: 25px;
+    align-content: space-around
+}
+
+p {
+    width: 655px;
+    text-align: left;
+    font-family: "BBH Sans Bogle", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 4px;
+
+}
+
+.topbutton {
+    text-align: right;
+    position: absolute;
+    left: 366px;
+    top: 19px;
+    font-family: "Playwrite DE SAS", cursive;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.signup {
+    position: absolute;
+    top: -52px;
+    right: -291px;
+    width: 78px;
+    margin: 50px auto;
+    padding: 9px;
+    border: 2px solid #535cbc;
+    border-radius: 48px;
+    text-align: center;
+    background-color: transparent;
+}
+
+
+.topbutton a:hover {
+    color: #f700f7a7;
+    text-align: right;
+    font-family: "Playwrite DE SAS", cursive;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(153, 2, 136, 0.3);
+    background-color: transparent;
+    border-radius: 48px;
+    border: 2px solid #535cbc;
+}
+
+
+.topbutton .Home:active {
+    color: rgb(184, 31, 31);
+}
+
+.topbutton .about:active {
+    color: rgb(184, 31, 31);
+}
+
+.topbutton .portfolio:active {
+    color: rgb(184, 31, 31);
+}
+
+.topbutton .services:active {
+    color: rgb(184, 31, 31);
+}
+
+.topbutton .about:active {
+    color: rgb(184, 31, 31);
+}
+
+.topbutton .about:active {
+    color: rgb(184, 31, 31);
+}
+
+.right-image {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 10px;
+    top: 122px;
+    width: 623px;
+
+}
+
+.left-image {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: -372px;
+    top: -30px;
+    border-radius: 10px;
+}
+
+.left-image img {
+
+    width: 100%;
+    height: 100%;
+    /* position: bsolute;
+    left: 10px;
+    top: 10px;
+    border-radius: 10px; */
+}
+
+.bottom-button-join {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    width: 119px;
+    margin: 50px auto;
+    padding: 9px;
+    border: 2px solid #535cbc;
+    border-radius: 4a8px;
+    text-align: center;
+    background-color: transparent;
+    position: absolute;
+    top: 628px;
+    left: 112px;
+}
+
+.bottom-button-join a:hover {
+
+    padding: 10px 25px;
+    border-radius: 500px;
+    font-size: 20px;
+    color: white;
+    background-color: #6a5acd;
+    border: none;
+    border-radius: 1000px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #6a5acd, 0 0 20px #6a5acd, 0 0 30px #6a5acd, 4px 4px 10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.2);
+
+
+}
+
+.bottom-button-learnmore {
+    color: #98afdf;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    width: 120px;
+    margin: 50px auto;
+    padding: 9px;
+    border: 2px solid #535cbc;
+    border-radius: 48px;
+    text-align: center;
+    background-color: transparent;
+    position: absolute;
+    top: 628px;
+    left: 312px;
+}
+
+.bottom-button-learnmore a:hover {
+    /* padding: 10px 25px; */
+    border-radius: 500px;
+    font-size: 20px;
+    color: rgb(103, 118, 205);
+    background-color: transparent;
+    border: none;
+    border-radius: 1000px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #5d587b, 0 0 20px #0a0238, 0 0 30px #6a5acd, 4px 4px 10px rgba(0, 0, 0, 0.5);
+    transform: scale(2);
+
+
+}
